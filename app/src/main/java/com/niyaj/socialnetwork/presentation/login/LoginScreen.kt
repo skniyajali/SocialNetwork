@@ -25,25 +25,26 @@ import com.niyaj.socialnetwork.presentation.util.Screen
 @Composable
 fun LoginScreen(
     navController: NavController,
-    viewModel: LoginViewModel = hiltViewModel(),
+    viewModel: LoginViewModel = hiltViewModel()
 ) {
-    Box(modifier= Modifier
-        .fillMaxSize()
-        .padding(
-            start = SpaceLarge,
-            end = SpaceLarge,
-            top = SpaceLarge,
-            bottom = 50.dp
-        )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                start = SpaceLarge,
+                end = SpaceLarge,
+                top = SpaceLarge,
+                bottom = 50.dp
+            )
     ) {
         Column(
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxSize()
                 .align(Alignment.Center),
-            verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = stringResource(R.string.login),
+                text = stringResource(id = R.string.login),
                 style = MaterialTheme.typography.h1
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
@@ -53,8 +54,8 @@ fun LoginScreen(
                     viewModel.setUsernameText(it)
                 },
                 keyboardType = KeyboardType.Email,
-                hint = stringResource(R.string.login_hint),
                 error = viewModel.usernameError.value,
+                hint = stringResource(id = R.string.login_hint)
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             StandardTextField(
@@ -62,46 +63,52 @@ fun LoginScreen(
                 onValueChange = {
                     viewModel.setPasswordText(it)
                 },
+                hint = stringResource(id = R.string.password_hint),
                 keyboardType = KeyboardType.Password,
-                hint = stringResource(R.string.password_hint),
-                showPasswordToggle = viewModel.showPasswordToggle.value,
-                onPasswordToggleClick = {
-                    viewModel.setShowPasswordToggle(it)
-                },
                 error = viewModel.passwordError.value,
+                isPasswordVisible = viewModel.showPassword.value,
+                onPasswordToggleClick = {
+                    viewModel.setShowPassword(it)
+                }
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             Button(
                 onClick = {
-                   navController.navigate(Screen.MainFeedScreen.route)
+                    navController.navigate(
+                        Screen.MainFeedScreen.route
+                    )
                 },
-                modifier = Modifier.align(Alignment.End)
+                modifier = Modifier
+                    .align(Alignment.End)
             ) {
                 Text(
-                    text = stringResource(R.string.login),
+                    text = stringResource(id = R.string.login),
                     color = MaterialTheme.colors.onPrimary
                 )
             }
         }
         Text(
             text = buildAnnotatedString {
-                append(stringResource(R.string.dont_have_an_account_yet))
-                append("")
-                withStyle(style = SpanStyle(
-                    color = MaterialTheme.colors.primary
-                )){
-                    append(stringResource(R.string.sign_up))
+                append(stringResource(id = R.string.dont_have_an_account_yet))
+                append(" ")
+                val signUpText = stringResource(id = R.string.sign_up)
+                withStyle(
+                    style = SpanStyle(
+                        color = MaterialTheme.colors.primary
+                    )
+                ) {
+                    append(signUpText)
                 }
             },
             style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.onBackground,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .clickable {
-                    navController.navigate(Screen.RegisterScreen.route)
+                    navController.navigate(
+                        Screen.RegisterScreen.route
+                    )
                 }
         )
-
-
     }
+
 }

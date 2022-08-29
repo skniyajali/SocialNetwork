@@ -14,7 +14,3 @@ val ProfilePictureSizeExtraSmall = 30.dp
 val IconSizeSmall = 15.dp
 val IconSizeMedium = 25.dp
 val IconSizeLarge = 35.dp
-
-val PaddingSmall = 8.dp
-val PaddingMedium = 16.dp
-val PaddingLarge = 24.dp

@@ -7,38 +7,40 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ViewModel() {
+class LoginViewModel @Inject constructor() : ViewModel() {
+
     private val _usernameText = mutableStateOf("")
     val usernameText: State<String> = _usernameText
 
     private val _passwordText = mutableStateOf("")
     val passwordText: State<String> = _passwordText
 
-    private val _showPasswordToggle = mutableStateOf(false)
-    val showPasswordToggle: State<Boolean> = _showPasswordToggle
+    private val _showPassword = mutableStateOf(false)
+    val showPassword: State<Boolean> = _showPassword
 
-    private val _usernameError = mutableStateOf<String>("")
+    private val _usernameError = mutableStateOf("")
     val usernameError: State<String> = _usernameError
 
-    private val _passwordError = mutableStateOf<String>("")
+    private val _passwordError = mutableStateOf("")
     val passwordError: State<String> = _passwordError
 
-    fun setUsernameText(username: String){
+    fun setUsernameText(username: String) {
         _usernameText.value = username
     }
 
-    fun setPasswordText(password: String){
+    fun setPasswordText(password: String) {
         _passwordText.value = password
     }
 
-    fun setShowPasswordToggle(showPassword: Boolean){
-        _showPasswordToggle.value = showPassword
-    }
-    fun setIsUsernameError(error: String){
+    fun setIsUsernameError(error: String) {
         _usernameError.value = error
     }
 
-    fun setIsPasswordError(error: String){
+    fun setIsPasswordError(error: String) {
         _passwordError.value = error
+    }
+
+    fun setShowPassword(showPassword: Boolean) {
+        _showPassword.value = showPassword
     }
 }

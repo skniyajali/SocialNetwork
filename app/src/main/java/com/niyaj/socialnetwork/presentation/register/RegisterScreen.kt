@@ -20,94 +20,128 @@ import com.niyaj.socialnetwork.R
 import com.niyaj.socialnetwork.presentation.components.StandardTextField
 import com.niyaj.socialnetwork.presentation.ui.theme.SpaceLarge
 import com.niyaj.socialnetwork.presentation.ui.theme.SpaceMedium
+import com.niyaj.socialnetwork.util.Constants
 
 @Composable
 fun RegisterScreen(
     navController: NavController,
-    viewModel: RegisterViewModel = hiltViewModel(),
+    viewModel: RegisterViewModel = hiltViewModel()
 ) {
-    Box(modifier= Modifier
-        .fillMaxSize()
-        .padding(
-            start = SpaceLarge,
-            end = SpaceLarge,
-            top = SpaceLarge,
-            bottom = 50.dp
-        )
+    val state = viewModel.state.value
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                start = SpaceLarge,
+                end = SpaceLarge,
+                top = SpaceLarge,
+                bottom = 50.dp
+            )
     ) {
         Column(
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxSize()
                 .align(Alignment.Center),
-            verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = stringResource(R.string.register),
+                text = stringResource(id = R.string.register),
                 style = MaterialTheme.typography.h1
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             StandardTextField(
-                text = viewModel.emailText.value,
+                text = state.emailText,
                 onValueChange = {
-                    viewModel.setEmailText(it)
+                    viewModel.onEvent(RegisterEvent.EnteredEmail(it))
+                },
+                error = when (state.emailError) {
+                    RegisterState.EmailError.FieldEmpty -> {
+                        stringResource(id = R.string.this_field_cant_be_empty)
+                    }
+                    RegisterState.EmailError.InvalidEmail -> {
+                        stringResource(id = R.string.not_a_valid_email)
+                    }
+                    null -> ""
                 },
                 keyboardType = KeyboardType.Email,
-                hint = stringResource(R.string.email),
-                error = viewModel.emailError.value,
+                hint = stringResource(id = R.string.email)
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             StandardTextField(
-                text = viewModel.usernameText.value,
+                text = state.usernameText,
                 onValueChange = {
-                    viewModel.setUsernameText(it)
+                    viewModel.onEvent(RegisterEvent.EnteredUsername(it))
                 },
-                hint = stringResource(R.string.username),
-                error = viewModel.usernameError.value,
+                error = when (state.usernameError) {
+                    RegisterState.UsernameError.FieldEmpty -> {
+                        stringResource(id = R.string.this_field_cant_be_empty)
+                    }
+                    RegisterState.UsernameError.InputTooShort -> {
+                        stringResource(id = R.string.input_too_short, Constants.MIN_USERNAME_LENGTH)
+                    }
+                    null -> ""
+                },
+                hint = stringResource(id = R.string.username)
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             StandardTextField(
-                text = viewModel.passwordText.value,
+                text = state.passwordText,
                 onValueChange = {
-                    viewModel.setPasswordText(it)
+                    viewModel.onEvent(RegisterEvent.EnteredPassword(it))
                 },
+                hint = stringResource(id = R.string.password_hint),
                 keyboardType = KeyboardType.Password,
-                hint = stringResource(R.string.password_hint),
-                showPasswordToggle = viewModel.showPasswordToggle.value,
-                onPasswordToggleClick = {
-                    viewModel.setShowPasswordToggle(it)
+                error = when (state.passwordError) {
+                    RegisterState.PasswordError.FieldEmpty -> {
+                        stringResource(id = R.string.this_field_cant_be_empty)
+                    }
+                    RegisterState.PasswordError.InputTooShort -> {
+                        stringResource(id = R.string.input_too_short, Constants.MIN_PASSWORD_LENGTH)
+                    }
+                    RegisterState.PasswordError.InvalidPassword -> {
+                        stringResource(id = R.string.invalid_password)
+                    }
+                    null -> ""
                 },
-                error = viewModel.passwordError.value,
+                isPasswordVisible = state.isPasswordVisible,
+                onPasswordToggleClick = {
+                    viewModel.onEvent(RegisterEvent.TogglePasswordVisibility)
+                }
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier.align(Alignment.End)
+                onClick = {
+                    viewModel.onEvent(RegisterEvent.Register)
+                },
+                modifier = Modifier
+                    .align(Alignment.End)
             ) {
                 Text(
-                    text = stringResource(R.string.register),
+                    text = stringResource(id = R.string.register),
                     color = MaterialTheme.colors.onPrimary
                 )
             }
         }
         Text(
             text = buildAnnotatedString {
-                append(stringResource(R.string.already_have_an_account))
-                append("")
-                withStyle(style = SpanStyle(
-                    color = MaterialTheme.colors.primary
-                )){
-                    append(stringResource(R.string.sign_in))
+                append(stringResource(id = R.string.already_have_an_account))
+                append(" ")
+                val signUpText = stringResource(id = R.string.sign_in)
+                withStyle(
+                    style = SpanStyle(
+                        color = MaterialTheme.colors.primary
+                    )
+                ) {
+                    append(signUpText)
                 }
             },
             style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.onBackground,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .clickable {
                     navController.popBackStack()
                 }
         )
-
-
     }
+
 }

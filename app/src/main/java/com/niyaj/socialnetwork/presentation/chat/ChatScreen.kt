@@ -7,15 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.niyaj.socialnetwork.presentation.components.StandardScaffold
 
 @Composable
-fun ChatScreen(
-    navController: NavController
-) {
+fun ChatScreen(navController: NavController) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Chat Screen")
+        Text(text = "Chat screen")
     }
 }

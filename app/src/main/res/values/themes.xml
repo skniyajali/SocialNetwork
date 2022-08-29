@@ -3,5 +3,6 @@
 
     <style name="Theme.SocialNetwork" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/light_gray</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
     </style>
 </resources>
