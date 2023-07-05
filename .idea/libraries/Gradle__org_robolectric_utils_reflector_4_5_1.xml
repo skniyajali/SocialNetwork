@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.robolectric:utils-reflector:4.5.1">
+  <library name="Gradle: org.robolectric:utils-reflector:4.5.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/utils-reflector/4.5.1/4c863e637f4c86a798e56476c4ee20bb11f93264/utils-reflector-4.5.1.jar!/" />
     </CLASSES>

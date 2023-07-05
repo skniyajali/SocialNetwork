@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.robolectric:pluginapi:4.5.1">
+  <library name="Gradle: org.robolectric:pluginapi:4.5.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/pluginapi/4.5.1/7a7980de3a612a71da6e684297d56d6cd5b26a6c/pluginapi-4.5.1.jar!/" />
     </CLASSES>

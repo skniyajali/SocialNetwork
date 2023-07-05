@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.robolectric:resources:4.5.1">
+  <library name="Gradle: org.robolectric:resources:4.5.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/4.5.1/ea48f4bf975970284c671c86d9d2e37bf53a7035/resources-4.5.1.jar!/" />
     </CLASSES>

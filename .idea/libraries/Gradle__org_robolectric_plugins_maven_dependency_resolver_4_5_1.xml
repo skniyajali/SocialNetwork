@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.robolectric:plugins-maven-dependency-resolver:4.5.1">
+  <library name="Gradle: org.robolectric:plugins-maven-dependency-resolver:4.5.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.5.1/c53d839d8c8b70475dac3361c19fe38bce6219ce/plugins-maven-dependency-resolver-4.5.1.jar!/" />
     </CLASSES>
