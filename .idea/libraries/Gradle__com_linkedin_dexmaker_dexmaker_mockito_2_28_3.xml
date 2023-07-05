@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.linkedin.dexmaker:dexmaker-mockito:2.28.3">
+  <library name="Gradle: com.linkedin.dexmaker:dexmaker-mockito:2.28.3" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.linkedin.dexmaker/dexmaker-mockito/2.28.3/c99bbcad64d754247568d5f87478c04e26b15c8b/dexmaker-mockito-2.28.3.jar!/" />
     </CLASSES>

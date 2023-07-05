@@ -2,7 +2,12 @@ package com.niyaj.socialnetwork.presentation.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -137,6 +142,7 @@ fun ProfileScreen(
                 )
             }
         }
+
         Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
@@ -190,6 +196,4 @@ fun ProfileScreen(
             )
         }
     }
-
-
 }
