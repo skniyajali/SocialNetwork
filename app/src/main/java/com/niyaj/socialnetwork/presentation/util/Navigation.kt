@@ -9,12 +9,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.niyaj.socialnetwork.domain.models.Post
 import com.niyaj.socialnetwork.presentation.PersonListScreen
-import com.niyaj.socialnetwork.presentation.edit_profile.EditProfileScreen
 import com.niyaj.socialnetwork.presentation.activity.ActivityScreen
 import com.niyaj.socialnetwork.presentation.chat.ChatScreen
 import com.niyaj.socialnetwork.presentation.create_post.CreatePostScreen
-import com.niyaj.socialnetwork.presentation.main_feed.MainFeedScreen
+import com.niyaj.socialnetwork.presentation.edit_profile.EditProfileScreen
 import com.niyaj.socialnetwork.presentation.login.LoginScreen
+import com.niyaj.socialnetwork.presentation.main_feed.MainFeedScreen
 import com.niyaj.socialnetwork.presentation.post_detail.PostDetailScreen
 import com.niyaj.socialnetwork.presentation.profile.ProfileScreen
 import com.niyaj.socialnetwork.presentation.register.RegisterScreen
@@ -64,7 +64,6 @@ fun Navigation(navController: NavHostController) {
                 navController = navController,
                 post = Post(
                     username = "Sk Niyaj Ali",
-                    imageUrl = "",
                     profilePictureUrl = "",
                     description = "Lorem ipsum dolor sit amet, construe sadistic elite, sed\n" +
                             "diam nonhuman usermod temper incident ut labor et door \n" +
