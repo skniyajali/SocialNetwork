@@ -127,7 +127,7 @@ fun ProfileScreen(
                 Post(
                     post = Post(
                         username = "Sk Niyaj Ali",
-                        imageUrl = "",
+                        imageUrl = R.drawable.image,
                         profilePictureUrl = "",
                         description = "Lorem ipsum dolor sit amet, construe sadistic elite, sed\n" +
                                 "diam nonhuman usermod temper incident ut labor et door \n" +

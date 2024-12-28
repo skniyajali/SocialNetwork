@@ -3,7 +3,17 @@ package com.niyaj.socialnetwork.presentation.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -33,7 +43,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.niyaj.socialnetwork.R
 import com.niyaj.socialnetwork.domain.models.Post
-import com.niyaj.socialnetwork.presentation.ui.theme.*
+import com.niyaj.socialnetwork.presentation.ui.theme.HintGray
+import com.niyaj.socialnetwork.presentation.ui.theme.MediumGray
+import com.niyaj.socialnetwork.presentation.ui.theme.ProfilePictureSizeMedium
+import com.niyaj.socialnetwork.presentation.ui.theme.SpaceMedium
+import com.niyaj.socialnetwork.presentation.ui.theme.SpaceSmall
+import com.niyaj.socialnetwork.presentation.ui.theme.TextWhite
 import com.niyaj.socialnetwork.util.Constants
 
 @Composable
@@ -51,9 +66,11 @@ fun Post(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = if (showProfileImage) {
-                    ProfilePictureSizeMedium / 2f
-                } else 0.dp)
+                .offset(
+                    y = if (showProfileImage) {
+                        ProfilePictureSizeMedium / 2f
+                    } else 0.dp
+                )
                 .clip(MaterialTheme.shapes.medium)
                 .shadow(5.dp)
                 .background(MediumGray)
@@ -62,7 +79,7 @@ fun Post(
                 }
         ) {
             Image(
-                painterResource(id = R.drawable.image),
+                painterResource(id = post.imageUrl),
                 contentDescription = "Post image"
             )
             Column(
@@ -71,7 +88,7 @@ fun Post(
                     .padding(SpaceMedium)
             ) {
                 ActionRow(
-                    username = "Sk Niyaj Ali",
+                    username = post.username,
                     modifier = Modifier.fillMaxWidth(),
                     onLikeClick = { isLiked ->
 
